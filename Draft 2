@@ -1,0 +1,36 @@
+import random
+
+#opening the probability table
+prob = open('probabilities.csv')
+print(prob)
+
+for i in prob:
+    print(i) #printing the probability table
+
+#random choices of L, F or R
+#whichever one is picked, the corresponding lane will be added onto the list
+#and then the latest lane will be analysed, etc
+
+lane = [5]
+
+for i in range(10):
+    step = random.choice(['L','F','R'])
+    if step == 'L':
+        laneL = lane[-1] -1
+        lane.append(laneL)
+
+    elif step == 'F':
+        laneF = lane[-1]
+        lane.append(laneF)
+    else:
+        laneR = lane[-1]+1
+        lane.append(laneR)
+
+    print(lane[-1]) #this will print the current lane
+    
+
+#So I managed to get random walk movements of left, forward or right
+    #but i need to implement the probabilities in these so it is
+        #more accurate with the movements.
+
+#I also need to put in boundaries for the walls, i.e. no lane 0 or lane 10
