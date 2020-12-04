@@ -1,25 +1,87 @@
+#This prints each row of the probabilities seperately.
+#It also converts each row into a list
+
+import csv
 import random
 
-#opening the probability table
 prob = open('probabilities.csv')
-print(prob)
+readprob = csv.reader(prob)
 
-for i in prob:
-    print(i) #printing the probability table
+########################
 
-#random choices of L, F or R
-#whichever one is picked, the corresponding lane will be added onto the list
-#and then the latest lane will be analysed, etc
+#the following prints the probability brackets of each lane according
+    #to the last 2 turns
+last_turns=[]
+
+def function1(i):
+    for row in readprob:
+        print(row[i])
+        last_turns.append(row[i]) #this puts those probabilities in a list
+        #print(row[1]) - this prints out the columns
+
+
+function1(1) #this function prints the column i of every row
+print(last_turns)
+
+
+########################
+#I am using random.choices function which considers weighted probabilities
+#Ideal for our task
+
+#I can achieve the correct lane from the table of probabilities but for some
+#reason the columns one is not working. 
+
 
 lane = [5]
 
+direction = ['L','F','R']
+prob2 = (0.3,0.4,0.3)
+
+
+step = random.choices(direction,weights = prob2, k=10) #the direction is denoted to the weighted probabilities.
+print(step)
+
+step2 = ['F']#starting initially with an F
+
+    
+print("\nfor loop") #this is here just for seperation (wont be here for actual code)
+
 for i in range(10):
-    step = random.choice(['L','F','R'])
-    if step == 'L':
+
+    step = random.choices(direction,weights = prob2, k=1)
+    step2.append(step) #adding each random direction into the step2 list which can be accessed easily
+    print(step2)
+    #print(last_turns[lane[-1]])
+
+    #the following should code for the columns, however it doesnt.
+    #the print functions here are added so i can see whether it is working correctly or not.
+    #they wont be in the actual code.
+    if (step2[-1]=='L') and (step2[-2]!='L'):
+        function1(1)
+        print(function1(1))
+        print(last_turns[lane[-1]])
+    elif (step2[-1]=='L') and (step2[-2]=='L'):
+        function1(2)
+        print(last_turns[lane[-1]])
+    elif (step2[-1]=='F') and (step2[-2]!='F'):
+        function1(3)
+        print(last_turns[lane[-1]])
+    elif (step2[-1]=='F') and (step2[-2]=='F'):
+        function1(4)
+        print(last_turns[lane[-1]])
+    elif (step2[-1]=='R') and (step2[-2]!='R'):
+        function1(5)
+        print(last_turns[lane[-1]])
+    else:
+        function1(6)
+        print(last_turns[lane[-1]])
+
+    
+    if step[-1] == 'L':
         laneL = lane[-1] -1
         lane.append(laneL)
 
-    elif step == 'F':
+    elif step[-1] == 'F':
         laneF = lane[-1]
         lane.append(laneF)
     else:
@@ -27,10 +89,9 @@ for i in range(10):
         lane.append(laneR)
 
     print(lane[-1]) #this will print the current lane
+
+print(last_turns[lane[-1]])
     
 
-#So I managed to get random walk movements of left, forward or right
-    #but i need to implement the probabilities in these so it is
-        #more accurate with the movements.
+#For this draft I have managed to use probability into the list functions.
 
-#I also need to put in boundaries for the walls, i.e. no lane 0 or lane 10
