@@ -1,7 +1,9 @@
+#creating a dictionary to store the moves of the game
 grid={"U1":" ","U2":" ", "U3":" ",
       "M1":" ","M2":" ","M3":" ",
       "L1":" ","L2":" ","L3":" "}
 
+#using a function for an empty board to start with
 def gridlines(board):
     print(board["U1"] + "|" + board["U2"] + "|" + board["U3"])
     print("-+-+-")
@@ -9,27 +11,29 @@ def gridlines(board):
     print("-+-+-")
     print(board["L1"] + "|" + board["L2"] + "|" + board["L3"])
 
+#printing the board by calling the function created above
 gridlines(grid)
-          
+
+#function to carry out the actual game itself
 def tictactoe():
     turn=1
     option = 0
-    valid = 0
+    valid = 0 #setting flags which will be used during our checks.
     print("\nHow to play the game:")
     print("\nRow: U = Upper, M = Middle, L = Lower")
-    print("Column: 1 = Left, 2 = Centre, 3 = Right")
+    print("Column: 1 = Left, 2 = Centre, 3 = Right") #instructing the user on how to communicate the move they are interested in
     while valid == 0:
         choice=str(input("\nPlayer 1 to select between \"X\" or \"O\": "))
         if choice == "x" or choice == "o":
             valid = 1
         else:
-            print("Invalid input, enter again.")
+            print("Invalid input, enter again.") #this section of the code keeps asking the user for their choice until "x" or "o" is entered.
     if choice.lower()=="x":
         while turn<=9 and option == 0:
             if turn%2!=0:
-                move=str(input("Player 1, please enter your move: "))
+                move=str(input("Player 1, please enter your move: ")) #if the turn is an odd number, it should be player 1's turn.
                 if move.not in grid.keys():
-                    print("Invalid input, enter again")
+                    print("Invalid input, enter again") #checking whether the move is actually on the grid.
                 if grid[move.upper()]==" ":
                     grid[move.upper()]="X"
                     gridlines(grid)
