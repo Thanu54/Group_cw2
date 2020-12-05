@@ -11,6 +11,7 @@ def function1(x,y):
     readprob = csv.reader(prob)
     for column in readprob:
         last_turns.append(column[1])#appends entire given column
+    prob.close()
     #print(last_turns)
     lane_num=last_turns[y]
     print(lane_num) #prints correct row from given column
