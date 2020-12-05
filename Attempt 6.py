@@ -10,7 +10,7 @@ def function1(x,y):
     prob = open('probabilities.csv')
     readprob = csv.reader(prob)
     for column in readprob:
-        last_turns.append(column[1])#appends entire given column
+        last_turns.append(column[x])#appends entire given column
     prob.close()
     #print(last_turns)
     lane_num=last_turns[y]
