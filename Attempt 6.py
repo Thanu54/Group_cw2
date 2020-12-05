@@ -12,10 +12,13 @@ def function1(x,y):
     for column in readprob:
         last_turns.append(column[x])#appends entire given column
     prob.close()
-    #print(last_turns)
-    lane_num=last_turns[y]
-    print(lane_num) #prints correct row from given column
-
+    words=lane_prob.strip("()") #removes the brackets from the set of probabilities
+    words2=words.split(",") #splits the respective probabilities in the set
+    a=[] #creates an empty list that we will fill in using a for loop
+    for i in words2:
+        a.append(float(i)) #adds the probabilities in the list as floats.
+        #Note: the main reason for this section of the code is to convert the probabilities from the string form to float form 
+    return a     
 
 ########################
 #I still apply random.choices function which considers the weighted
@@ -29,15 +32,14 @@ direction = ['L','F','R']
 
 steps = ['F']#starting initially with an F
 lane = [5]#starting initially in lane 5
+prob2 = (0.30,0.40,0.30)
+step=random.choices(direction,weights=prob2,k=1)
+steps.append(step[0])
 
-#testing for the first 10 steps only
 print("\nfor loop")          
-for i in range(10):
+for i in range(100):
     #determine the x value from the table by looking at the direction
     #of the previous 2 steps
-    if (len(steps)==1): #the second step will only have 1 previous step
-                        #stored
-        x=5
     if (steps[-1]=='L') and (steps[-2]!='L'):
         x=1
     elif (steps[-1]=='L') and (steps[-2]=='L'):
@@ -62,7 +64,7 @@ for i in range(10):
     y=lane[-1]
     next_prob=function1(x,y)#call the relevent probability
     #print(next_prob)
-    print(y)
+    print("Lane: "+ str(y))
     step=random.choices(direction,weights=next_prob)#generate the direction of the
                                             #next step
     steps.append(step[0])#add this step to the steps list
