@@ -10,7 +10,7 @@ def function1(x,y):
     prob = open('probabilities.csv')
     readprob = csv.reader(prob)
     for column in readprob:
-        last_turns.append(column[x])#appends entire given column
+        last_turns.append(column[1])#appends entire given column
     #print(last_turns)
     lane_num=last_turns[y]
     print(lane_num) #prints correct row from given column
@@ -28,17 +28,15 @@ direction = ['L','F','R']
 
 steps = ['F']#starting initially with an F
 lane = [5]#starting initially in lane 5
-prob2 = (0.3,0.4,0.3)
-step=random.choices(direction,prob2)
-steps.append(step[0])
-print(steps)
-
 
 #testing for the first 10 steps only
 print("\nfor loop")          
 for i in range(10):
     #determine the x value from the table by looking at the direction
     #of the previous 2 steps
+    if (len(steps)==1): #the second step will only have 1 previous step
+                        #stored
+        x=5
     if (steps[-1]=='L') and (steps[-2]!='L'):
         x=1
     elif (steps[-1]=='L') and (steps[-2]=='L'):
@@ -52,9 +50,9 @@ for i in range(10):
     else:
         x=6
     #add to the list 'lane' to store which lane each step is taken in
-    if step[-1]=="L":
+    if steps[-1]=='L':
         next_lane=lane[-1]-1
-    elif step[-1]=="F":
+    elif steps[-1]=='F':
         next_lane=lane[-1]
     else:
         next_lane=lane[-1]+1
@@ -64,7 +62,7 @@ for i in range(10):
     next_prob=function1(x,y)#call the relevent probability
     #print(next_prob)
     print(y)
-    step=random.choices(direction,next_prob)#generate the direction of the
+    step=random.choices(direction,weights=next_prob)#generate the direction of the
                                             #next step
     steps.append(step[0])#add this step to the steps list
     print(steps)
