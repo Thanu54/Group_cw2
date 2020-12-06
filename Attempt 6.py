@@ -89,4 +89,5 @@ for i in range(10,101,10):
     lane9_freq=lane_count.count(9)
     print('Lane 9: ' + str(lane9_freq))
         
+        
 
