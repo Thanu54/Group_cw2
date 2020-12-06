@@ -22,7 +22,17 @@ def function1(x,y):
     
 
 direction = ['L','F','R']
-for k in range(5):
+lane1=[]
+lane2=[]
+lane3=[]
+lane4=[]
+lane5=[]
+lane6=[]
+lane7=[]
+lane8=[]
+lane9=[]
+
+for k in range(20):
     
     #Already know initial step so I simulate the second step
     steps = ['F']
@@ -67,27 +77,33 @@ for k in range(5):
         #print(steps)
         #print(lane)
 
-for i in range(10,101,10):
-    lane_count=lane[0:i]
-    print('\nFrequencies for the first '+str(i)+' steps')
-    lane1_freq=lane_count.count(1)
-    print('Lane 1: ' + str(lane1_freq))
-    lane2_freq=lane_count.count(2)
-    print('Lane 2: ' + str(lane2_freq))
-    lane3_freq=lane_count.count(3)
-    print('Lane 3: ' + str(lane3_freq))
-    lane4_freq=lane_count.count(4)
-    print('Lane 4: ' + str(lane4_freq))
-    lane5_freq=lane_count.count(5)
-    print('Lane 5: ' + str(lane5_freq))
-    lane6_freq=lane_count.count(6)
-    print('Lane 6: ' + str(lane6_freq))
-    lane7_freq=lane_count.count(7)
-    print('Lane 7: ' + str(lane7_freq))
-    lane8_freq=lane_count.count(8)
-    print('Lane 8: ' + str(lane8_freq))
-    lane9_freq=lane_count.count(9)
-    print('Lane 9: ' + str(lane9_freq))
-        
-        
+    for i in range(10,101,10):
+        lane_count=lane[0:i]
+        lane1_freq=lane_count.count(1)
+        lane1.append(lane1_freq)
+        lane2_freq=lane_count.count(2)
+        lane2.append(lane2_freq)
+        lane3_freq=lane_count.count(3)
+        lane3.append(lane3_freq)
+        lane4_freq=lane_count.count(4)
+        lane4.append(lane4_freq)
+        lane5_freq=lane_count.count(5)
+        lane5.append(lane5_freq)
+        lane6_freq=lane_count.count(6)
+        lane6.append(lane6_freq)
+        lane7_freq=lane_count.count(7)
+        lane7.append(lane7_freq)
+        lane8_freq=lane_count.count(8)
+        lane8.append(lane8_freq)
+        lane9_freq=lane_count.count(9)
+        lane9.append(lane9_freq)
 
+#print('Lane 1 frequency: '+str(lane1))
+#print('Lane 2 frequency: '+str(lane2))
+#print('Lane 3 frequency: '+str(lane3))
+#print('Lane 4 frequency: '+str(lane4))
+#print('Lane 5 frequency: '+str(lane5))
+#print('Lane 6 frequency: '+str(lane6))
+#print('Lane 7 frequency: '+str(lane7))
+#print('Lane 8 frequency: '+str(lane8))
+#print('Lane 9 frequency: '+str(lane9))
