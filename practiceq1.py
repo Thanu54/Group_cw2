@@ -50,8 +50,11 @@ def tictactoe():
                     turn=turn+1
                 elif grid[move.upper()]!=" ":
                     print("Space already taken!")
-            if grid["U1"] == grid["U2"] and grid["U1"] == grid["U3"]: # This section of the program checks for 3 in a row of either 'X' or 'O' which
-                                                                      # indicates the winner of tic tac toe, with a message showing who won the game
+            
+             # This section of the program checks for 3 in a row,column or diagonal of either 'X' or 'O' which
+             # indicates the winner of tic tac toe, with a message showing who won the game
+            #If we get 3 Xs in a line, Player 1 wins, or else player 2 wins.
+            if grid["U1"] == grid["U2"] and grid["U1"] == grid["U3"]:
                 if grid["U1"] == "X":
                     print("\nPlayer 1 wins!")
                     option = 1 # Setting option to 1 will break the while loop
@@ -111,9 +114,9 @@ def tictactoe():
                 print("Tie")
 
 
-    #this following part is the same as part 1 but for when player 1 chooses 'O' instead.
-                
-    elif choice.lower() == "o": # Carrying out the game where player 1's choice is 'O' and player 2's is 'X'
+    #this following part codes the game for when player 1 chooses 'O' instead of 'X'. 
+    #we see that the rest of the code is the same, except that we swap 'O' and 'X'.
+    elif choice.lower() == "o":
         while turn<=9 and option == 0:
             if turn%2!=0:
                 move=str(input("Player 1, please enter your move: "))
@@ -124,7 +127,7 @@ def tictactoe():
                     gridlines(grid)
                     turn=turn+1
                 elif grid[move.upper()]!=" ":
-                    print("Space already taken!")
+                    print("Space already taken!") 
             else:
                 move=str(input("Player 2, please enter your move: "))
                 if move.upper() not in grid.keys():
