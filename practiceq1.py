@@ -14,46 +14,47 @@ def gridlines(board):
 #printing the board by calling the function created above
 gridlines(grid)
 
-#function to carry out the actual game itself
+#function to carry out the actual game itself        
 def tictactoe():
     turn=1
     option = 0
-    valid = 0 #setting flags which will be used during our checks.
+    valid = 0   #setting flags which will be used during our checks.
     print("\nHow to play the game:")
-    print("\nRow: U = Upper, M = Middle, L = Lower")
-    print("Column: 1 = Left, 2 = Centre, 3 = Right") #instructing the user on how to communicate the move they are interested in
-    while valid == 0:
+    print("\nRow: U = Upper, M = Middle, L = Lower") #instructing the user on how to communicate the move they are interested in
+    print("Column: 1 = Left, 2 = Centre, 3 = Right") 
+    while valid == 0:   #this section of the code keeps asking the user for their choice until "x" or "o" is entered.
         choice=str(input("\nPlayer 1 to select between \"X\" or \"O\": "))
-        if choice.lower() == "x" or choice.lower() == "o":
+        if choice.lower() == "x" or choice.lower() == "o":  #.lower allows user to use capital or lower case letters
             valid = 1
         else:
-            print("Invalid input, enter again.") #this section of the code keeps asking the user for their choice until "x" or "o" is entered.
-    if choice.lower()=="x":
+            print("Invalid input, enter again.")
+    if choice.lower()=="x": # Carrying out the game where player 1's choice is 'X' and player 2's is 'O'
         while turn<=9 and option == 0:
             if turn%2!=0:
                 move=str(input("Player 1, please enter your move: ")) #if the turn is an odd number, it should be player 1's turn.
-                if move.lower() not in grid.keys():
+                if move.upper() not in grid.keys(): 
                     print("Invalid input, enter again") #checking whether the move is actually on the grid.
-                if grid[move.upper()]==" ":
+                elif grid[move.upper()]==" ":   #Checks if the position on grid is empty and if so, enters an 'X'
                     grid[move.upper()]="X"
                     gridlines(grid)
-                    turn=turn+1
-                elif grid[move.upper()]!=" ":
+                    turn=turn+1     # 1 added to turn so turn variable becomes even, which is for player 2
+                elif grid[move.upper()]!=" ":   # indicates to user that the space is already taken
                     print("Space already taken!")
             else:
-                move=str(input("Player 2, please enter your move: "))
-                if move.lower() not in grid.keys():
+                move=str(input("Player 2, please enter your move: "))   #If the turn is even, it is player 2's turn
+                if move.upper() not in grid.keys():
                     print("Invalid input, enter again")
-                if grid[move.upper()]==" ":
+                elif grid[move.upper()]==" ":
                     grid[move.upper()]="O"
                     gridlines(grid)
                     turn=turn+1
                 elif grid[move.upper()]!=" ":
                     print("Space already taken!")
-            if grid["U1"] == grid["U2"] and grid["U1"] == grid["U3"]:
+            if grid["U1"] == grid["U2"] and grid["U1"] == grid["U3"]: # This section of the program checks for 3 in a row of either 'X' or 'O' which
+                                                                      # indicates the winner of tic tac toe, with a message showing who won the game
                 if grid["U1"] == "X":
                     print("\nPlayer 1 wins!")
-                    option = 1
+                    option = 1 # Setting option to 1 will break the while loop
                 elif grid["U1"] == "O":
                     print("\nPlayer 2 wins!")
                     option = 1
@@ -106,14 +107,17 @@ def tictactoe():
                 elif grid["U3"] == "O":
                     print("\nPlayer 2 wins!")
                     option = 1
-            elif turn == 9:
+            elif turn == 10:    # If after all 9 moves are finished and still no winner is decided, the program will print a statement saying that the game is tied
                 print("Tie")
 
-    elif choice.lower() == "o":
+
+    #this following part is the same as part 1 but for when player 1 chooses 'O' instead.
+                
+    elif choice.lower() == "o": # Carrying out the game where player 1's choice is 'O' and player 2's is 'X'
         while turn<=9 and option == 0:
             if turn%2!=0:
                 move=str(input("Player 1, please enter your move: "))
-                if move.lower() not in grid.keys():
+                if move.upper() not in grid.keys():
                     print("Invalid input, enter again")
                 elif grid[move.upper()]==" ":
                     grid[move.upper()]="O"
@@ -123,7 +127,7 @@ def tictactoe():
                     print("Space already taken!")
             else:
                 move=str(input("Player 2, please enter your move: "))
-                if move.lower() not in grid.keys():
+                if move.upper() not in grid.keys():
                     print("Invalid input, enter again")
                 elif grid[move.upper()]==" ":
                     grid[move.upper()]="X"
@@ -139,10 +143,10 @@ def tictactoe():
                     print("\nPlayer 2 wins!")
                     option = 1
             elif grid["M1"] == grid["M2"] and grid["M1"] == grid["M3"]:
-                if grid["M1"] == "X":
+                if grid["M1"] == "O":
                     print("\nPlayer 1 wins!")
                     option = 1
-                elif grid["M1"] == "O":
+                elif grid["M1"] == "X":
                     print("\nPlayer 2 wins!")
                     option = 1
             elif grid["L1"] == grid["L2"] and grid["L1"] == grid["L3"]:
@@ -187,11 +191,10 @@ def tictactoe():
                 elif grid["U3"] == "X":
                     print("\nPlayer 2 wins!")
                     option = 1
-            elif turn == 9:
+            elif turn == 10:
                 print("Tie")
 
             
         
-tictactoe()
-
+tictactoe() # runs the whole game
 
