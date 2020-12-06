@@ -1,3 +1,5 @@
+#Section A: Creating the grid for Tictactoe
+
 #creating a dictionary to store the moves of the game
 grid={"U1":" ","U2":" ", "U3":" ",
       "M1":" ","M2":" ","M3":" ",
@@ -14,6 +16,9 @@ def gridlines(board):
 #printing the board by calling the function created above
 gridlines(grid)
 
+
+#Secion B: Function to show instructions on how to play the game
+
 #function to carry out the actual game itself        
 def tictactoe():
     turn=1
@@ -28,6 +33,11 @@ def tictactoe():
             valid = 1
         else:
             print("Invalid input, enter again.")
+            
+    
+    #Section C: Tictactoe game for Player 1 as 'X', Player 2 as 'O'
+
+
     if choice.lower()=="x": # Carrying out the game where player 1's choice is 'X' and player 2's is 'O'
         while turn<=9 and option == 0:
             if turn%2!=0:
@@ -50,6 +60,10 @@ def tictactoe():
                     turn=turn+1
                 elif grid[move.upper()]!=" ":
                     print("Space already taken!")
+            
+            
+            #Section D: Determines the winner of the game
+            
             
              # This section of the program checks for 3 in a row,column or diagonal of either 'X' or 'O' which
              # indicates the winner of tic tac toe, with a message showing who won the game
@@ -113,7 +127,11 @@ def tictactoe():
             elif turn == 10:    # If after all 9 moves are finished and still no winner is decided, the program will print a statement saying that the game is tied
                 print("Tie")
 
-
+      
+      
+    #Section E: Tictactoe game for Player 1 as 'O', Player 2 as 'X'
+      
+      
     #this following part codes the game for when player 1 chooses 'O' instead of 'X'. 
     #we see that the rest of the code is the same, except that we swap 'O' and 'X'.
     elif choice.lower() == "o":
