@@ -98,12 +98,213 @@ for k in range(20):
         lane9_freq=lane_count.count(9)
         lane9.append(lane9_freq)
 
-#print('Lane 1 frequency: '+str(lane1))
-#print('Lane 2 frequency: '+str(lane2))
-#print('Lane 3 frequency: '+str(lane3))
-#print('Lane 4 frequency: '+str(lane4))
-#print('Lane 5 frequency: '+str(lane5))
-#print('Lane 6 frequency: '+str(lane6))
-#print('Lane 7 frequency: '+str(lane7))
-#print('Lane 8 frequency: '+str(lane8))
-#print('Lane 9 frequency: '+str(lane9))
+#LANE1 FREQUENCIES
+freq10_1=lane1[0::10]
+freq20_1=lane1[1::10]
+freq30_1=lane1[2::10]
+freq40_1=lane1[3::10]
+freq50_1=lane1[4::10]
+freq60_1=lane1[5::10]
+freq70_1=lane1[6::10]
+freq80_1=lane1[7::10]
+freq90_1=lane1[8::10]
+freq100_1=lane1[9::10]
+
+#LANE 2 FREQUENCIES
+freq10_2=lane2[0::10]
+freq20_2=lane2[1::10]
+freq30_2=lane2[2::10]
+freq40_2=lane2[3::10]
+freq50_2=lane2[4::10]
+freq60_2=lane2[5::10]
+freq70_2=lane2[6::10]
+freq80_2=lane2[7::10]
+freq90_2=lane2[8::10]
+freq100_2=lane2[9::10]
+
+#LANE 3 FREQUENCIES
+freq10_3=lane3[0::10]
+freq20_3=lane3[1::10]
+freq30_3=lane3[2::10]
+freq40_3=lane3[3::10]
+freq50_3=lane3[4::10]
+freq60_3=lane3[5::10]
+freq70_3=lane3[6::10]
+freq80_3=lane3[7::10]
+freq90_3=lane3[8::10]
+freq100_3=lane3[9::10]
+
+#LANE 4 FREQUENCIES
+freq10_4=lane4[0::10]
+freq20_4=lane4[1::10]
+freq30_4=lane4[2::10]
+freq40_4=lane4[3::10]
+freq50_4=lane4[4::10]
+freq60_4=lane4[5::10]
+freq70_4=lane4[6::10]
+freq80_4=lane4[7::10]
+freq90_4=lane4[8::10]
+freq100_4=lane4[9::10]
+
+#LANE 5 FREQUENCIES
+freq10_5=lane5[0::10]
+freq20_5=lane5[1::10]
+freq30_5=lane5[2::10]
+freq40_5=lane5[3::10]
+freq50_5=lane5[4::10]
+freq60_5=lane5[5::10]
+freq70_5=lane5[6::10]
+freq80_5=lane5[7::10]
+freq90_5=lane5[8::10]
+freq100_5=lane5[9::10]
+
+#LANE 6 FREQUENCIES
+freq10_6=lane6[0::10]
+freq20_6=lane6[1::10]
+freq30_6=lane6[2::10]
+freq40_6=lane6[3::10]
+freq50_6=lane6[4::10]
+freq60_6=lane6[5::10]
+freq70_6=lane6[6::10]
+freq80_6=lane6[7::10]
+freq90_6=lane6[8::10]
+freq100_6=lane6[9::10]
+
+#LANE 7 FREQUENCIES
+freq10_7=lane7[0::10]
+freq20_7=lane7[1::10]
+freq30_7=lane7[2::10]
+freq40_7=lane7[3::10]
+freq50_7=lane7[4::10]
+freq60_7=lane7[5::10]
+freq70_7=lane7[6::10]
+freq80_7=lane7[7::10]
+freq90_7=lane7[8::10]
+freq100_7=lane7[9::10]
+
+#LANE 8 FREQUENCIES
+freq10_8=lane8[0::10]
+freq20_8=lane8[1::10]
+freq30_8=lane8[2::10]
+freq40_8=lane8[3::10]
+freq50_8=lane8[4::10]
+freq60_8=lane8[5::10]
+freq70_8=lane8[6::10]
+freq80_8=lane8[7::10]
+freq90_8=lane8[8::10]
+freq100_8=lane8[9::10]
+
+#LANE 9 FREQUENCIES
+freq10_9=lane9[0::10]
+freq20_9=lane9[1::10]
+freq30_9=lane9[2::10]
+freq40_9=lane9[3::10]
+freq50_9=lane9[4::10]
+freq60_9=lane9[5::10]
+freq70_9=lane9[6::10]
+freq80_9=lane9[7::10]
+freq90_9=lane9[8::10]
+freq100_9=lane9[9::10]
+
+
+print("lane 1 after 10 steps: " + str(sum(freq10_1)))
+print("lane 1 after 20 steps: " + str(sum(freq20_1)))
+print("lane 1 after 30 steps: " + str(sum(freq30_1)))
+print("lane 1 after 40 steps: " + str(sum(freq40_1)))
+print("lane 1 after 50 steps: " + str(sum(freq50_1)))
+print("lane 1 after 60 steps: " + str(sum(freq60_1)))
+print("lane 1 after 70 steps: " + str(sum(freq70_1)))
+print("lane 1 after 80 steps: " + str(sum(freq80_1)))
+print("lane 1 after 90 steps: " + str(sum(freq80_1)))
+print("lane 1 after 100 steps: " + str(sum(freq100_1)))
+
+print("\n lane 2 after 10 steps: " + str(sum(freq10_2)))
+print("lane 2 after 20 steps: " + str(sum(freq20_2)))
+print("lane 2 after 30 steps: " + str(sum(freq30_2)))
+print("lane 2 after 40 steps: " + str(sum(freq40_2)))
+print("lane 2 after 50 steps: " + str(sum(freq50_2)))
+print("lane 2 after 60 steps: " + str(sum(freq60_2)))
+print("lane 2 after 70 steps: " + str(sum(freq70_2)))
+print("lane 2 after 80 steps: " + str(sum(freq80_2)))
+print("lane 2 after 90 steps: " + str(sum(freq90_2)))
+print("lane 2 after 100 steps: " + str(sum(freq100_2)))
+
+print("\nlane 3 after 10 steps: " + str(sum(freq10_3)))
+print("lane 3 after 20 steps: " + str(sum(freq20_3)))
+print("lane 3 after 30 steps: " + str(sum(freq30_3)))
+print("lane 3 after 40 steps: " + str(sum(freq40_3)))
+print("lane 3 after 50 steps: " + str(sum(freq50_3)))
+print("lane 3 after 60 steps: " + str(sum(freq60_3)))
+print("lane 3 after 70 steps: " + str(sum(freq70_3)))
+print("lane 3 after 80 steps: " + str(sum(freq80_3)))
+print("lane 3 after 90 steps: " + str(sum(freq90_3)))
+print("lane 3 after 100 steps: " + str(sum(freq100_3)))
+
+print("\nlane 4 after 10 steps: " + str(sum(freq10_4)))
+print("lane 4 after 20 steps: " + str(sum(freq20_4)))
+print("lane 4 after 30 steps: " + str(sum(freq30_4)))
+print("lane 4 after 40 steps: " + str(sum(freq40_4)))
+print("lane 4 after 50 steps: " + str(sum(freq50_4)))
+print("lane 4 after 60 steps: " + str(sum(freq60_4)))
+print("lane 4 after 70 steps: " + str(sum(freq70_4)))
+print("lane 4 after 80 steps: " + str(sum(freq80_4)))
+print("lane 4 after 90 steps: " + str(sum(freq90_4)))
+print("lane 4 after 100 steps: " + str(sum(freq100_4)))
+
+print("\nlane 5 after 10 steps: " + str(sum(freq10_5)))
+print("lane 5 after 20 steps: " + str(sum(freq20_5)))
+print("lane 5 after 30 steps: " + str(sum(freq30_5)))
+print("lane 5 after 40 steps: " + str(sum(freq40_5)))
+print("lane 5 after 50 steps: " + str(sum(freq50_5)))
+print("lane 5 after 60 steps: " + str(sum(freq60_5)))
+print("lane 5 after 70 steps: " + str(sum(freq70_5)))
+print("lane 5 after 80 steps: " + str(sum(freq80_5)))
+print("lane 5 after 90 steps: " + str(sum(freq90_5)))
+print("lane 5 after 100 steps: " + str(sum(freq100_5)))
+
+print("\nlane 6 after 10 steps: " + str(sum(freq10_6)))
+print("lane 6 after 20 steps: " + str(sum(freq20_6)))
+print("lane 6 after 30 steps: " + str(sum(freq30_6)))
+print("lane 6 after 40 steps: " + str(sum(freq40_6)))
+print("lane 6 after 50 steps: " + str(sum(freq50_6)))
+print("lane 6 after 60 steps: " + str(sum(freq60_6)))
+print("lane 6 after 70 steps: " + str(sum(freq70_6)))
+print("lane 6 after 80 steps: " + str(sum(freq80_6)))
+print("lane 6 after 90 steps: " + str(sum(freq90_6)))
+print("lane 6 after 100 steps: " + str(sum(freq100_6)))
+
+print("\nlane 7 after 10 steps: " + str(sum(freq10_7)))
+print("lane 7 after 20 steps: " + str(sum(freq20_7)))
+print("lane 7 after 30 steps: " + str(sum(freq30_7)))
+print("lane 7 after 40 steps: " + str(sum(freq40_7)))
+print("lane 7 after 50 steps: " + str(sum(freq50_7)))
+print("lane 7 after 60 steps: " + str(sum(freq60_7)))
+print("lane 7 after 70 steps: " + str(sum(freq70_7)))
+print("lane 7 after 80 steps: " + str(sum(freq80_7)))
+print("lane 7 after 90 steps: " + str(sum(freq90_7)))
+print("lane 7 after 100 steps: " + str(sum(freq100_7)))
+
+print("\nlane 8 after 10 steps: " + str(sum(freq10_8)))
+print("lane 8 after 20 steps: " + str(sum(freq20_8)))
+print("lane 8 after 30 steps: " + str(sum(freq30_8)))
+print("lane 8 after 40 steps: " + str(sum(freq40_8)))
+print("lane 8 after 50 steps: " + str(sum(freq50_8)))
+print("lane 8 after 60 steps: " + str(sum(freq60_8)))
+print("lane 8 after 70 steps: " + str(sum(freq70_8)))
+print("lane 8 after 80 steps: " + str(sum(freq80_8)))
+print("lane 8 after 90 steps: " + str(sum(freq90_8)))
+print("lane 8 after 100 steps: " + str(sum(freq100_8)))
+
+print("\nlane 9 after 10 steps: " + str(sum(freq10_9)))
+print("lane 9 after 20 steps: " + str(sum(freq20_9)))
+print("lane 9 after 30 steps: " + str(sum(freq30_9)))
+print("lane 9 after 40 steps: " + str(sum(freq40_9)))
+print("lane 9 after 50 steps: " + str(sum(freq50_9)))
+print("lane 9 after 60 steps: " + str(sum(freq60_9)))
+print("lane 9 after 70 steps: " + str(sum(freq70_9)))
+print("lane 9 after 80 steps: " + str(sum(freq80_9)))
+print("lane 9 after 90 steps: " + str(sum(freq90_9)))
+print("lane 9 after 100 steps: " + str(sum(freq100_9)))
+
+
+
