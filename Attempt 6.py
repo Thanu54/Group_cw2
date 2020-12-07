@@ -22,6 +22,7 @@ def function1(x,y):
     
 
 direction = ['L','F','R']
+
 lane1=[]
 lane2=[]
 lane3=[]
@@ -31,6 +32,10 @@ lane6=[]
 lane7=[]
 lane8=[]
 lane9=[]
+
+sim_countlistF=[]
+sim_countlistL=[]
+sim_countlistR=[]
 
 for k in range(20):
     
@@ -76,8 +81,8 @@ for k in range(20):
         steps.append(step[0])#add this step to the steps list
         #print(steps)
         #print(lane)
-
-
+        
+    #lane frequencies code
     for i in range(10,101,10):
         lane_count=lane[0:i]
         lane1_freq=lane_count.count(1)
@@ -98,13 +103,48 @@ for k in range(20):
         lane8.append(lane8_freq)
         lane9_freq=lane_count.count(9)
         lane9.append(lane9_freq)
+    
+    #This section will record each consecutive sequence for L, R & F and return the longest    
+    
+    countlistF=[1]
+    countlistL=[1]
+    countlistR=[1]
+    count=1
 
+    for j in range(len(steps)-1):
+        if (steps[j]=='F') and (steps[j+1]=='F'):
+            count=count+1
+            #print(count)
+            countlistF.append(count)
+            #print(countlist)
+        elif (steps[j]=='F') and (steps[j+1]!='F'):
+            count = 1
+        
+        if (steps[j]=='L') and (steps[j+1]=='L'):
+            count=count+1
+            #print(count)
+            countlistL.append(count)
+            #print(countlist)
+        elif (steps[j]=='L') and (steps[j+1]!='L'):
+            count = 1
+        
+        if (steps[j]=='R') and (steps[j+1]=='R'):
+            count=count+1
+            #print(count)
+            countlistR.append(count)
+            #print(countlist)
+        elif (steps[j]=='R') and (steps[j+1]!='R'):
+            count = 1
+
+    sim_countlistF.append(max(countlistF))
+    sim_countlistL.append(max(countlistL))
+    sim_countlistR.append(max(countlistR))           
+       
 
 #The following section prints out the sum of the total frequency spent in each lane
     #in the entire simulation, not each separate simulation.
 #We use the sum function to find the total frequency spent in each lane throughout
     #the entire simulation
-
         
 for n in range(1,11): #the range is for the number of lanes (9)
     count = 10*n
@@ -144,5 +184,11 @@ for n in range(1,11):
     count = 10*n
     print("lane 9 after " + str(count) + " steps: " + str(sum(lane9[n::10])))
 print("\n")
+
+
+#Longest consecutive sequence output
+print("The longest consecutive sequence forward is: ", max(sim_countlistF))
+print("The longest consecutive sequence left is: " , max(sim_countlistL))
+print("The longest consecutive sequence right is: " , max(sim_countlistR))
 
 
