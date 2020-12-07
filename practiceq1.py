@@ -27,7 +27,7 @@ def tictactoe():
     print("\nHow to play the game:") #displaying instructions to the user on how to communicate the move they are interested in
     print("\nRow: U = Upper, M = Middle, L = Lower") 
     print("Column: 1 = Left, 2 = Centre, 3 = Right") 
-    print("For example, top left corner= U3")
+    print("For example, top left corner= U1")
     while valid == 0:   #this section of the code keeps asking the user for their choice until "x" or "o" is entered
         choice=str(input("\nPlayer 1 to select between \"X\" or \"O\": "))  
         if choice.lower() == "x" or choice.lower() == "o":  #.lower allows user to use capital or lower case letters
