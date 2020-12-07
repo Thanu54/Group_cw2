@@ -1,7 +1,10 @@
-import csv
-import random
+#Question 2 – The drunk walks home
 
-#global variable
+import csv #this allows us to read the csv file containg the table of probabilities
+import random #the random package allows us to use the random.choice() when determining the next step
+
+#We set our global variables  to empty lists. Data from each of the 1000 simulations is appended
+#onto these lists:
 
 lane1=[]
 lane2=[]
@@ -17,20 +20,30 @@ sim_countlistF=[]
 sim_countlistL=[]
 sim_countlistR=[]
 
+#SECTION A: SIMULATION
+#The simulation function will run the simulation of 100 steps, 1000 times
+#and will also output the total frequencies for each lane (in 10 step increments)
+#and the longest consecutive sequence of directions recorded over the entire simulation
+
 def simulation():
     for k in range(1000):
         direction = ['L','F','R']
+
+        #we are given the nature of the first step, so we use this information to
+        #simulate the second step
         steps = ['F']
         lane = [5]
-        prob2 = (0.30,0.40,0.30)
-        step=random.choices(direction,weights=prob2,k=1)
-        steps.append(step[0])
+        prob2 = (0.30,0.40,0.30) #corresponding probability taken from the table
+        step=random.choices(direction,weights=prob2,k=1) #random.choices will return a direction taking
+                                                         #into account the probabilities of each one
+                                                         #taking place
+        steps.append(step[0]) #this is then added to the 'steps' list
         
-        for i in range(98):
-            #determine the x value from the table by looking at the direction
-            #of the previous 2 steps
+        for i in range(98): #their are 98 steps remaining to simulate
+            
+            #to determine the x value from the table, we look at the directions of the previous 2 steps 
             if (steps[-1]=='L') and (steps[-2]!='L'):
-                x=1
+                x=1 #x is the corresponding column from the table of probabilites
             elif (steps[-1]=='L') and (steps[-2]=='L'):
                 x=2
             elif (steps[-1]=='F') and (steps[-2]!='F'):
@@ -41,26 +54,31 @@ def simulation():
                 x=5
             else:
                 x=6
-            #add to the list 'lane' to store which lane each step is taken in
+            #the direction of the last step is noted
             if steps[-1]=='L': 
                 next_lane=lane[-1]-1
             elif steps[-1]=='F':
                 next_lane=lane[-1]
             else:
                 next_lane=lane[-1]+1
-            lane.append(next_lane)
-            #determine the y value by looking at what lane the last step was in
-            y=lane[-1]
-            next_prob=function1(x,y)#call the relevent probability
-            step=random.choices(direction,weights=next_prob,k=1)
-            steps.append(step[0])
-        lane_freq(lane)
-        consec_seq(steps)
-        
+            lane.append(next_lane) #the last step is added to the 'lane' list
+            y=lane[-1] #can determine the y value of the table by looking at the lane of the previous step
+            next_prob=probability(x,y) #the relevent probability is found using the probability function
+            step=random.choices(direction,weights=next_prob,k=1) #the next step can then be generated given
+                                                                 #the probability found from the table
+            steps.append(step[0]) #the step is added to the list of all the steps takes so far
+            
+        lane_freq(lane) #this function will calculate the frequencies of each lane
+        consec_seq(steps) #this function will return the longest consecutive sequence of step directions
+
+    #the frequencies of each lane for every 10 steps added is outputted
     for n in range(1,11):
         count = 10*n
+        #Calculating the sum of the frequency visited in each lane for every 10 steps, in every simulation.
         print("lane 1 after " + str(count) + " steps: " + str(sum(lane1[n::10])))
     print("\n")
+
+    #lines 75 to 78 is repeated for each lane:
     for n in range(1,11):
         count = 10*n
         print("lane 2 after " + str(count) + " steps: " + str(sum(lane2[n::10])))
@@ -95,34 +113,44 @@ def simulation():
     print("\n")
 
 
-    #Longest consecutive sequence output
+    #the longest consecutive sequence for F, R and L directions are outputted
     print("The longest consecutive sequence forward is: ", max(sim_countlistF))
     print("The longest consecutive sequence left is: " , max(sim_countlistL))
     print("The longest consecutive sequence right is: " , max(sim_countlistR))
 
 
+#SECTION B: PROBABILITIES
+#The probability function will take an x and y input, read the probability table from the
+#csv file and return the corresponding probability
 
-
-def function1(x,y):
-    last_turns=[]
-    lanes=[]
+def probability(x,y):
+    last_turns=[] #this empty list will eventually contain the probability for the relevent column
+    #lanes=[] ###### i think this shouldnt be here, it isnt used later on
     prob = open('Probabilities.csv')
-    readprob = csv.reader(prob)
+    readprob = csv.reader(prob) #opens the csv file in read mode
     for column in readprob:
         last_turns.append(column[x])#appends entire given column
-    #print(last_turns)
-    lane_prob=last_turns[y]
+    lane_prob=last_turns[y] #will take the relevent row number from the column selected
     prob.close()
+    #to convert the probability from a string to a float, we use the strip and split functions to
+    #remove the string characters
     words=lane_prob.strip("()")
     words2=words.split(",")
     a=[]
     for i in words2:
         a.append(float(i))
-    return a #prints correct row from given column
+    return a #prints correct row from given column as a float
 
 
-def lane_freq(lane):
-    for i in range(10,101,10):
+#SECTION C: LANE FREQUENCIES
+#Counting the number of times the person has ended up in each lane and
+#appending these values into the empty list denoted in lines 9 to 17.
+#This has been done through a for loop so the frequency is counted for
+#in the first i steps for each lane.
+#i.e. steps 1 to 10, steps 1 to 20, steps 1 to 30,..., steps 1 to 100.
+
+def lane_freq(lane): #this function has 'lane' as the variable. 
+    for i in range(10,101,10): #starting from 10, ending at 100, with increasing increments of 10
         lane_count=lane[0:i]
         lane1_freq=lane_count.count(1)
         lane1.append(lane1_freq)
@@ -143,40 +171,48 @@ def lane_freq(lane):
         lane9_freq=lane_count.count(9)
         lane9.append(lane9_freq)
 
+#SECTION D: LONGEST CONSECUTIVE SEQUENCE
+#This section will note all consecutive sequences in a list and return the largest one
+#If there are consecutive steps then the number of times a certain step is consecutive will be
+#stored within a list.
+#The maximum value from that list is then taken to find the longest consecutive sequence
+#for forward, left and right steps. 
 
 def consec_seq(steps):
+    #the lists for each direction begin with 1 as their longest consecutive sequence
     countlistF=[1]
     countlistL=[1]
     countlistR=[1]
     count=1
 
-    for j in range(len(steps)-1):
-        if (steps[j]=='F') and (steps[j+1]=='F'):
-            count=count+1
-            #print(count)
-            countlistF.append(count)
-            #print(countlist)
-        elif (steps[j]=='F') and (steps[j+1]!='F'):
-            count = 1
-        
+    for j in range(len(steps)-1): #the for loop will run through the direction of every step taken
+        if (steps[j]=='F') and (steps[j+1]=='F'): #if there are 2 of the same directions next to
+                                                  #eachother
+            count=count+1 #the longest consecutive sequence so far will be counted
+            countlistF.append(count) #this is then added to the existing list of consecutive sequences
+        elif (steps[j]=='F') and (steps[j+1]!='F'): #if there is a different direction directly after
+            count = 1 #then the longest consecutive sequence is 1
+
+        #the same for Forward step is repeated for 'Left' and 'Right' steps. 
         if (steps[j]=='L') and (steps[j+1]=='L'):
             count=count+1
-            #print(count)
             countlistL.append(count)
-            #print(countlist)
         elif (steps[j]=='L') and (steps[j+1]!='L'):
             count = 1
         
         if (steps[j]=='R') and (steps[j+1]=='R'):
             count=count+1
-            #print(count)
             countlistR.append(count)
-            #print(countlist)
         elif (steps[j]=='R') and (steps[j+1]!='R'):
             count = 1
-            
+
+    #the longest consecutive sequence for each step in every simulation is added into a master list for each step
+    #These master lists are in lines 19 to 21.
+    #The maximum from these master lists are then identified in lines 114 to 116.
     sim_countlistF.append(max(countlistF))
     sim_countlistL.append(max(countlistL))
     sim_countlistR.append(max(countlistR))
 
+
+#the entire simulation will run
 simulation()
